@@ -20,7 +20,10 @@ func _input(event):
 			selectedUnits.append(unit)
 	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
-		var mouse_pos = get_global_mouse_position()		
+		var mouse_pos = get_global_mouse_position()
+		#for selectedUnit in selectedUnits:
+			#selectedUnit.change_target_pos(mouse_pos)
+		
 		var space_between_units = 100
 		var columns = 5
 		var j = 0
