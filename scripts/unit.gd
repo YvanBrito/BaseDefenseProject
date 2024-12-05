@@ -6,16 +6,11 @@ const ACCEL = 7.0
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 var targetPos: Vector2
 
-func _on_Area2D_input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		print("Área clicada!")
+func change_target_pos(newTargetPos):
+	targetPos = newTargetPos
 
 func _ready():
 	targetPos = position
-
-func _input(event):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
-		targetPos = get_global_mouse_position()
 
 func _physics_process(delta):
 	var direction = Vector2();
