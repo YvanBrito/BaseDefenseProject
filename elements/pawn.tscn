@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://fjlnst2mxmm1"]
+
+[ext_resource type="Script" path="res://scripts/unit.gd" id="1_5sojq"]
+[ext_resource type="Texture2D" uid="uid://bo08e4fy7uo3k" path="res://assets/Tiny Swords (Update 010)/Factions/Knights/Troops/Pawn/Blue/Pawn_Blue.png" id="2_jduuh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hn5cu"]
+atlas = ExtResource("2_jduuh")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nmld"]
+atlas = ExtResource("2_jduuh")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8pfy"]
+atlas = ExtResource("2_jduuh")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dc32x"]
+atlas = ExtResource("2_jduuh")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpcef"]
+atlas = ExtResource("2_jduuh")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06lw0"]
+atlas = ExtResource("2_jduuh")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d0a4t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hn5cu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nmld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8pfy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dc32x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpcef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06lw0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4uasu"]
+radius = 16.0
+
+[node name="Pawn" type="CharacterBody2D"]
+script = ExtResource("1_5sojq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -27)
+sprite_frames = SubResource("SpriteFrames_d0a4t")
+autoplay = "default"
+frame_progress = 0.460616
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -22)
+shape = SubResource("CircleShape2D_4uasu")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
