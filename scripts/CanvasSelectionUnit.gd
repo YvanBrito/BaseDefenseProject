@@ -43,7 +43,8 @@ func check_elements_in_area(start_position, end_position):
 	query.transform = Transform2D(0, (end_position + start_position) / 2)
 
 	var results = space_state.intersect_shape(query)
-	for result in results:
-		result.collider.setSelected(true)
-		manager.selectedUnits.append(result.collider)
+	for result in results:		
+		if (result.collider.ownerPlayer == manager.playerName):
+			result.collider.setSelected(true)
+			manager.selectedUnits.append(result.collider)
 

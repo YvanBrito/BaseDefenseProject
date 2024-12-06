@@ -86,27 +86,43 @@ script = ExtResource("3_q74nb")
 
 [node name="Warrior" parent="." instance=ExtResource("4_1sxev")]
 position = Vector2(648, 667)
+health = 100
+ownerPlayer = "player1"
 
 [node name="Warrior2" parent="." instance=ExtResource("4_1sxev")]
 position = Vector2(650, 511)
+health = 100
+ownerPlayer = "player1"
 
 [node name="Warrior3" parent="." instance=ExtResource("4_1sxev")]
 position = Vector2(522, 773)
+health = 100
+ownerPlayer = "player1"
 
 [node name="Warrior4" parent="." instance=ExtResource("4_1sxev")]
 position = Vector2(765, 797)
+health = 100
+ownerPlayer = "player1"
 
 [node name="Pawn" parent="." instance=ExtResource("5_ml83q")]
 position = Vector2(223, 655)
+health = 100
+ownerPlayer = "player1"
 
 [node name="Pawn2" parent="." instance=ExtResource("5_ml83q")]
 position = Vector2(129, 747)
+health = 100
+ownerPlayer = "player1"
 
 [node name="Pawn3" parent="." instance=ExtResource("5_ml83q")]
 position = Vector2(272, 877)
+health = 100
+ownerPlayer = "player1"
 
 [node name="Pawn4" parent="." instance=ExtResource("5_ml83q")]
 position = Vector2(128, 468)
+health = 100
+ownerPlayer = "player1"
 
 [node name="Manager" type="Node2D" parent="."]
 script = ExtResource("1_wvy1l")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://o4ll374myy1v"]
+[gd_scene load_steps=19 format=3 uid="uid://o4ll374myy1v"]
 
-[ext_resource type="Script" path="res://scripts/Unit.gd" id="1_b44mt"]
 [ext_resource type="Texture2D" uid="uid://bqiw2dwpwrb4m" path="res://assets/Tiny Swords (Update 010)/Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png" id="1_fqr7i"]
+[ext_resource type="Script" path="res://scripts/warrior.gd" id="1_y4lt1"]
 [ext_resource type="Texture2D" uid="uid://bblw13dvcmofn" path="res://assets/selectionMark.png" id="2_7cmni"]
+[ext_resource type="PackedScene" uid="uid://cqkcnbm3bgwxl" path="res://elements/healthbar.tscn" id="4_amgpu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2js2y"]
 atlas = ExtResource("1_fqr7i")
@@ -28,6 +29,30 @@ region = Rect2(768, 0, 192, 192)
 atlas = ExtResource("1_fqr7i")
 region = Rect2(960, 0, 192, 192)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvy4x"]
+atlas = ExtResource("1_fqr7i")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_enhwr"]
+atlas = ExtResource("1_fqr7i")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7p06d"]
+atlas = ExtResource("1_fqr7i")
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpp8b"]
+atlas = ExtResource("1_fqr7i")
+region = Rect2(576, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1sqs"]
+atlas = ExtResource("1_fqr7i")
+region = Rect2(768, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_papu7"]
+atlas = ExtResource("1_fqr7i")
+region = Rect2(960, 192, 192, 192)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_fm8eo"]
 animations = [{
 "frames": [{
@@ -52,13 +77,36 @@ animations = [{
 "loop": true,
 "name": &"Idle",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvy4x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_enhwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7p06d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpp8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1sqs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_papu7")
+}],
+"loop": true,
+"name": &"Running",
+"speed": 10.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ybw7x"]
 radius = 22.0227
 
 [node name="Warrior" type="CharacterBody2D"]
-script = ExtResource("1_b44mt")
+script = ExtResource("1_y4lt1")
 
 [node name="SelectionMark" type="Sprite2D" parent="."]
 visible = false
@@ -68,12 +116,19 @@ texture = ExtResource("2_7cmni")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -33)
 sprite_frames = SubResource("SpriteFrames_fm8eo")
-animation = &"Idle"
+animation = &"Running"
 autoplay = "Idle"
-frame_progress = 0.723035
+frame = 1
+frame_progress = 0.242359
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -26)
 shape = SubResource("CircleShape2D_ybw7x")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="HealthBar" parent="." instance=ExtResource("4_amgpu")]
+offset_left = -30.0
+offset_top = -101.0
+offset_right = 30.0
+offset_bottom = -93.0

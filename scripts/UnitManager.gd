@@ -1,6 +1,7 @@
 extends Node2D
 
 var selectedUnits = []
+var playerName: String = "player1"
 
 func _input(event):		
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -27,8 +28,9 @@ func selectUnit():
 
 	if results.size() > 0:
 		var unit = results[0].collider
-		unit.setSelected(true)
-		selectedUnits.append(unit)
+		if (unit.ownerPlayer == playerName):
+			unit.setSelected(true)
+			selectedUnits.append(unit)
 
 func gridFormation(mouse_pos):
 	var space_between_units = 100
