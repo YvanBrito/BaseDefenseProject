@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://fjlnst2mxmm1"]
+[gd_scene load_steps=12 format=3 uid="uid://fjlnst2mxmm1"]
 
 [ext_resource type="Script" path="res://scripts/Unit.gd" id="1_snxyv"]
+[ext_resource type="Texture2D" uid="uid://bblw13dvcmofn" path="res://assets/selectionMark.png" id="2_2gkti"]
 [ext_resource type="Texture2D" uid="uid://bo08e4fy7uo3k" path="res://assets/Tiny Swords (Update 010)/Factions/Knights/Troops/Pawn/Blue/Pawn_Blue.png" id="2_jduuh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hn5cu"]
@@ -54,10 +55,15 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4uasu"]
-radius = 16.0
+radius = 23.0
 
 [node name="Pawn" type="CharacterBody2D"]
 script = ExtResource("1_snxyv")
+
+[node name="SelectionMark" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -1)
+texture = ExtResource("2_2gkti")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -27)
@@ -65,8 +71,8 @@ sprite_frames = SubResource("SpriteFrames_d0a4t")
 autoplay = "default"
 frame_progress = 0.460616
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -22)
-shape = SubResource("CircleShape2D_4uasu")
-
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -24)
+shape = SubResource("CircleShape2D_4uasu")

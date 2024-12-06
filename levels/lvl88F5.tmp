@@ -80,7 +80,7 @@ position = Vector2(-277, 684)
 texture = ExtResource("2_ox88f")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(1152, 662)
+position = Vector2(485, 623)
 zoom = Vector2(0.5, 0.5)
 script = ExtResource("3_q74nb")
 
@@ -88,7 +88,7 @@ script = ExtResource("3_q74nb")
 position = Vector2(648, 667)
 
 [node name="Warrior2" parent="." instance=ExtResource("4_1sxev")]
-position = Vector2(650, 511)
+position = Vector2(578, 511)
 
 [node name="Warrior3" parent="." instance=ExtResource("4_1sxev")]
 position = Vector2(522, 773)
@@ -106,10 +106,16 @@ position = Vector2(129, 747)
 position = Vector2(272, 877)
 
 [node name="Pawn4" parent="." instance=ExtResource("5_ml83q")]
-position = Vector2(128, 468)
+position = Vector2(101, 1026)
 
 [node name="Manager" type="Node2D" parent="."]
 script = ExtResource("1_wvy1l")
 
-[node name="SelectionUnit" type="Node2D" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 script = ExtResource("7_8c1ey")
