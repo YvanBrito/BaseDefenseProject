@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://dkgph77xkxepr"]
+[gd_scene load_steps=12 format=3 uid="uid://dkgph77xkxepr"]
 
 [ext_resource type="Texture2D" uid="uid://dd38gdv0pjvd4" path="res://assets/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Flat.png" id="1_v2w8n"]
 [ext_resource type="Script" path="res://scripts/UnitManager.gd" id="1_wvy1l"]
 [ext_resource type="Texture2D" uid="uid://ds7cmfwyn3dqd" path="res://assets/Tiny Swords (Update 010)/Factions/Knights/Buildings/Castle/Castle_Blue.png" id="2_ox88f"]
 [ext_resource type="Script" path="res://scripts/CameraControl.gd" id="3_q74nb"]
-[ext_resource type="PackedScene" uid="uid://o4ll374myy1v" path="res://elements/warrior.tscn" id="4_1sxev"]
-[ext_resource type="PackedScene" uid="uid://fjlnst2mxmm1" path="res://elements/pawn.tscn" id="5_ml83q"]
+[ext_resource type="PackedScene" uid="uid://o4ll374myy1v" path="res://elements/blue_warrior.tscn" id="4_1sxev"]
+[ext_resource type="PackedScene" uid="uid://fjlnst2mxmm1" path="res://elements/blue_pawn.tscn" id="6_ldlf2"]
 [ext_resource type="Script" path="res://scripts/CanvasSelectionUnit.gd" id="7_8c1ey"]
+[ext_resource type="PackedScene" uid="uid://bbbskrdfjen7x" path="res://elements/goblin.tscn" id="8_1kdpf"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_4fqom"]
 vertices = PackedVector2Array(1076, 635, 2010, 849, 1668, 864, -123, 839, 757, 637, 3264, -978, 3285, 2610, 2003, 1117, -1488, 2567, 1689, 1117, -1748, -1231, 1069, 361, -130, 567, 764, 368, -424, 846, -424, 579)
@@ -84,48 +85,23 @@ position = Vector2(1152, 662)
 zoom = Vector2(0.5, 0.5)
 script = ExtResource("3_q74nb")
 
-[node name="Warrior" parent="." instance=ExtResource("4_1sxev")]
-position = Vector2(648, 667)
-health = 100
-ownerPlayer = "player1"
-
-[node name="Warrior2" parent="." instance=ExtResource("4_1sxev")]
-position = Vector2(650, 511)
-health = 100
-ownerPlayer = "player1"
-
-[node name="Warrior3" parent="." instance=ExtResource("4_1sxev")]
-position = Vector2(522, 773)
-health = 100
-ownerPlayer = "player1"
-
-[node name="Warrior4" parent="." instance=ExtResource("4_1sxev")]
-position = Vector2(765, 797)
-health = 100
-ownerPlayer = "player1"
-
-[node name="Pawn" parent="." instance=ExtResource("5_ml83q")]
-position = Vector2(223, 655)
-health = 100
-ownerPlayer = "player1"
-
-[node name="Pawn2" parent="." instance=ExtResource("5_ml83q")]
-position = Vector2(129, 747)
-health = 100
-ownerPlayer = "player1"
-
-[node name="Pawn3" parent="." instance=ExtResource("5_ml83q")]
-position = Vector2(272, 877)
-health = 100
-ownerPlayer = "player1"
-
-[node name="Pawn4" parent="." instance=ExtResource("5_ml83q")]
-position = Vector2(128, 468)
-health = 100
-ownerPlayer = "player1"
-
 [node name="Manager" type="Node2D" parent="."]
 script = ExtResource("1_wvy1l")
 
 [node name="SelectionUnit" type="Node2D" parent="."]
 script = ExtResource("7_8c1ey")
+
+[node name="Pawn" parent="." instance=ExtResource("6_ldlf2")]
+position = Vector2(1098, 771)
+health = 100
+ownerPlayer = "player1"
+
+[node name="Goblin" parent="." instance=ExtResource("8_1kdpf")]
+position = Vector2(1142, 892)
+health = 100
+ownerPlayer = "cpu"
+
+[node name="Warrior" parent="." instance=ExtResource("4_1sxev")]
+position = Vector2(1079, 898)
+health = 100
+ownerPlayer = "player1"

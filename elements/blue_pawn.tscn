@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://fjlnst2mxmm1"]
 
-[ext_resource type="Script" path="res://scripts/pawn.gd" id="1_unymq"]
+[ext_resource type="Script" path="res://scripts/Unit.gd" id="1_w4q44"]
 [ext_resource type="Texture2D" uid="uid://bblw13dvcmofn" path="res://assets/selectionMark.png" id="2_2gkti"]
 [ext_resource type="Texture2D" uid="uid://bo08e4fy7uo3k" path="res://assets/Tiny Swords (Update 010)/Factions/Knights/Troops/Pawn/Blue/Pawn_Blue.png" id="2_jduuh"]
 [ext_resource type="PackedScene" uid="uid://cqkcnbm3bgwxl" path="res://elements/healthbar.tscn" id="4_bkex4"]
@@ -106,7 +106,7 @@ animations = [{
 radius = 23.0
 
 [node name="Pawn" type="CharacterBody2D"]
-script = ExtResource("1_unymq")
+script = ExtResource("1_w4q44")
 
 [node name="SelectionMark" type="Sprite2D" parent="."]
 visible = false
@@ -120,6 +120,13 @@ animation = &"Idle"
 autoplay = "Idle"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 67.14
+neighbor_distance = 5261.9
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(0.941176, 0, 0, 1)
+debug_path_custom_point_size = 11.95
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -24)
@@ -130,3 +137,8 @@ offset_left = -24.0
 offset_top = -72.0
 offset_right = 26.0
 offset_bottom = -66.0
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+radius = 10.0
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

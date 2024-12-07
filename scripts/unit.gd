@@ -10,6 +10,7 @@ const ACCEL = 7.0
 
 var targetPos: Vector2
 var selected: bool = false
+var movement_delta: float
 @export var health: int
 @export var ownerPlayer : String
 
@@ -39,17 +40,20 @@ func _physics_process(delta):
 		animated_sprite_2d.play("Running")
 		nav.target_position = targetPos
 	
-		direction = nav.get_next_path_position() - global_position
-		direction = direction.normalized()
+		direction = global_position.direction_to(nav.get_next_path_position())
+		#direction = direction.normalized()
 		
-		if direction.x < 0:
-			animated_sprite_2d.flip_h = true
-		else:
-			animated_sprite_2d.flip_h = false
+		animated_sprite_2d.flip_h = direction.x < 0
 		
 		velocity = velocity.lerp(direction * SPEED, ACCEL * delta)
+		#print(direction * SPEED)
+		#nav.set_velocity(direction * SPEED)
 
 		move_and_slide()
 	else:
 		animated_sprite_2d.play("Idle")
 		#animated_sprite_2d.flip_h = true
+
+
+func _on_navigation_agent_2d_velocity_computed(safe_velocity):
+	global_position = global_position.move_toward(global_position + safe_velocity, movement_delta)
