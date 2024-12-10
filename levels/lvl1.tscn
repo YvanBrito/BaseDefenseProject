@@ -9,6 +9,11 @@
 [ext_resource type="Script" path="res://scripts/CanvasSelectionUnit.gd" id="7_8c1ey"]
 [ext_resource type="PackedScene" uid="uid://bbbskrdfjen7x" path="res://elements/goblin.tscn" id="8_1kdpf"]
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_00xwc"]
+vertices = PackedVector2Array(1067.32, 389.109, 1988.61, 862.594, 1680.82, 875.422, 1060.68, 599.297, 1997.36, 1094.31, 3229.74, 2099.01, 930.453, 2368.99, 1685.19, 1115.7, 3531.09, -1390.88, -1735.59, -1334.12, 761.148, 385.891, -123.648, 587.148, 777.758, 590.719, -131.344, 808, -425.797, 582.859, -1243.24, 2358.04, -430.203, 808)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 5, 4, 1), PackedInt32Array(9, 8, 1, 0), PackedInt32Array(9, 0, 10), PackedInt32Array(11, 10, 12, 13), PackedInt32Array(9, 10, 11, 14), PackedInt32Array(15, 9, 14, 16), PackedInt32Array(7, 6, 15, 16, 13, 2), PackedInt32Array(3, 2, 13, 12)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(931, 2379, 3239, 2108, 3542, -1401, -1747, -1344, -1252, 2368), PackedVector2Array(-416, 593, -134, 597, -141, 798, -420, 798), PackedVector2Array(1691, 885, 1979, 873, 1987, 1085, 1695, 1105), PackedVector2Array(1051, 589, 787, 581, 772, 396, 1057, 399)])
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6grov"]
 texture = ExtResource("1_v2w8n")
 0:0/size_in_atlas = Vector2i(4, 4)
@@ -52,12 +57,11 @@ texture = ExtResource("1_v2w8n")
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_6grov")
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_00xwc"]
-vertices = PackedVector2Array(1067.32, 389.109, 1988.61, 862.594, 1680.82, 875.422, 1060.68, 599.297, 1997.36, 1094.31, 3229.74, 2099.01, 930.453, 2368.99, 1685.19, 1115.7, 3531.09, -1390.88, -1735.59, -1334.12, 761.148, 385.891, -123.648, 587.148, 777.758, 590.719, -131.344, 808, -425.797, 582.859, -1243.24, 2358.04, -430.203, 808)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 5, 4, 1), PackedInt32Array(9, 8, 1, 0), PackedInt32Array(9, 0, 10), PackedInt32Array(11, 10, 12, 13), PackedInt32Array(9, 10, 11, 14), PackedInt32Array(15, 9, 14, 16), PackedInt32Array(7, 6, 15, 16, 13, 2), PackedInt32Array(3, 2, 13, 12)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(931, 2379, 3239, 2108, 3542, -1401, -1747, -1344, -1252, 2368), PackedVector2Array(-416, 593, -134, 597, -141, 798, -420, 798), PackedVector2Array(1691, 885, 1979, 873, 1987, 1085, 1695, 1105), PackedVector2Array(1051, 589, 787, 581, 772, 396, 1057, 399)])
-
 [node name="Level 1" type="Node2D"]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_00xwc")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 
@@ -138,6 +142,3 @@ ownerPlayer = "player1"
 position = Vector2(720, 582)
 health = 100
 ownerPlayer = "cpu"
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_00xwc")
