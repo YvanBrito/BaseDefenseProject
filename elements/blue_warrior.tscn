@@ -103,7 +103,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ybw7x"]
-radius = 22.0227
+radius = 25.0
 
 [node name="Warrior" type="CharacterBody2D"]
 script = ExtResource("1_21b51")
@@ -116,15 +116,15 @@ texture = ExtResource("2_7cmni")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -33)
 sprite_frames = SubResource("SpriteFrames_fm8eo")
-animation = &"Running"
+animation = &"Idle"
 autoplay = "Idle"
-frame = 1
-frame_progress = 0.242359
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
-radius = 105.24
-neighbor_distance = 5261.9
+radius = 25.0
+max_speed = 9094.71
+debug_path_custom_color = Color(1, 0, 0, 1)
+debug_path_custom_point_size = 12.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -26)
@@ -135,6 +135,3 @@ offset_left = -30.0
 offset_top = -101.0
 offset_right = 30.0
 offset_bottom = -93.0
-
-[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
-radius = 10.0

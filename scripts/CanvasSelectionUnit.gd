@@ -47,4 +47,3 @@ func check_elements_in_area(start_position, end_position):
 		if (result.collider.ownerPlayer == manager.playerName):
 			result.collider.setSelected(true)
 			manager.selectedUnits.append(result.collider)
-

@@ -134,6 +134,8 @@ shape = SubResource("CircleShape2D_ybw7x")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
+radius = 50.0
+neighbor_distance = 50.0
 
 [node name="HealthBar" parent="." instance=ExtResource("4_lsh7h")]
 offset_left = -30.0
@@ -142,4 +144,4 @@ offset_right = 30.0
 offset_bottom = -93.0
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
-radius = 10.0
+radius = 20.0

@@ -103,7 +103,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4uasu"]
-radius = 23.0
+radius = 25.0
 
 [node name="Pawn" type="CharacterBody2D"]
 script = ExtResource("1_w4q44")
@@ -121,12 +121,10 @@ autoplay = "Idle"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
-radius = 67.14
-neighbor_distance = 5261.9
-debug_enabled = true
-debug_use_custom = true
+radius = 25.0
+max_speed = 9629.91
 debug_path_custom_color = Color(0.941176, 0, 0, 1)
-debug_path_custom_point_size = 11.95
+debug_path_custom_point_size = 12.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -24)
@@ -137,8 +135,3 @@ offset_left = -24.0
 offset_top = -72.0
 offset_right = 26.0
 offset_bottom = -66.0
-
-[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
-radius = 10.0
-
-[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

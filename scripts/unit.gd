@@ -10,7 +10,6 @@ const ACCEL = 7.0
 
 var targetPos: Vector2
 var selected: bool = false
-var movement_delta: float
 @export var health: int
 @export var ownerPlayer : String
 
@@ -19,41 +18,39 @@ func setSelected(_isSelected):
 
 func _set_health(value):
 	health = value
-	health_bar.health = health
+	health_bar._set_health(health)
 
 func isSelected():
 	return selected
 
 func change_target_pos(newTargetPos):
-	targetPos = newTargetPos
+	nav.target_position = newTargetPos
 
 func _ready():
-	targetPos = position
+	nav.target_position = position
 	health_bar.init_health(health)
+	nav.velocity_computed.connect(Callable(_on_navigation_agent_2d_velocity_computed))
 
 func _physics_process(delta):
-	var direction = Vector2();
+	var direction = Vector2()
 	
 	selection_mark.visible = selected
 	
-	if position.distance_to(targetPos) > 1:
+	print(nav.is_navigation_finished())
+	if not nav.is_navigation_finished():
 		animated_sprite_2d.play("Running")
-		nav.target_position = targetPos
-	
 		direction = global_position.direction_to(nav.get_next_path_position())
-		#direction = direction.normalized()
 		
 		animated_sprite_2d.flip_h = direction.x < 0
 		
-		velocity = velocity.lerp(direction * SPEED, ACCEL * delta)
-		#print(direction * SPEED)
-		#nav.set_velocity(direction * SPEED)
-
-		move_and_slide()
+		var new_velocity: Vector2 = direction * SPEED
+		if nav.avoidance_enabled:
+			nav.set_velocity(new_velocity)
+		else:
+			_on_navigation_agent_2d_velocity_computed(velocity.lerp(new_velocity, ACCEL * delta))
 	else:
 		animated_sprite_2d.play("Idle")
-		#animated_sprite_2d.flip_h = true
-
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity):
-	global_position = global_position.move_toward(global_position + safe_velocity, movement_delta)
+	velocity = safe_velocity
+	move_and_slide()
